@@ -705,3 +705,30 @@ procdump(void)
     printk("\n");
   }
 }
+
+//Print the currently running and sleeping processes (Step 2)
+void
+crsp(void){
+	struct proc *p;
+	char *state;
+
+	printk("name\tpid\tstate\n");
+	printk("---------------------------\n");
+
+	for(p = proc; p < &proc[NPROC]; p++){
+		acquire(&p->lock);
+
+		if(p->state == RUNNING){
+			state = "RUNNING";
+		}else if(p->state == SLEEPING){
+			state = "SLEEPING";
+		}else{
+			release(&p->lock);
+			continue;
+		}
+
+		printk("%s\t%d\t%s\n", p->name, p->pid, state);
+
+		release(&p->lock);
+	}
+}
