@@ -706,7 +706,7 @@ procdump(void)
   }
 }
 
-//Print the currently running and sleeping processes (Step 2)
+//Print the currently running and sleeping processes (Part 2)
 void
 crsp(void){
 	struct proc *p;

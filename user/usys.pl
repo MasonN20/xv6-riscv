@@ -43,4 +43,4 @@ entry("sbrk");
 entry("pause");
 entry("uptime");
 entry("sync");
-entry("crsp");
+entry("crsp"); #Part 2
